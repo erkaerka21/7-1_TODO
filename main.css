@@ -1,0 +1,45 @@
+body {
+  background-color: rgba(28, 28, 28, 0.784) !important;
+}
+.btn-icon {
+  width: 32px;
+  height: 28px;
+}
+.bi-circle {
+  width: 5px !important;
+  height: 5px !important;
+  color: white;
+}
+.card {
+  background-color: black !important;
+}
+.fw-bold {
+  color: white;
+}
+.bi-circle-fill-1 {
+  color: white;
+}
+.bi-circle-fill-2 {
+  color: rgb(63, 87, 60);
+}
+.bi-circle-fill-3 {
+  color: rgb(58, 244, 67);
+}
+.bi-circle-fill-4 {
+  color: rgb(255, 0, 0);
+}
+.gray-fond {
+  color: white;
+}
+.bi-pencil {
+  color: white;
+}
+.bi-trash {
+  color: red;
+}
+.container-card {
+  background-color: rgba(49, 49, 49, 0.729) !important;
+}
+.card-body {
+  height: 70vh;
+}
