@@ -6,8 +6,9 @@ const addTaskBttn = document.getElementById("addTaskBttn");
 const hadgalahBttn = document.getElementById("save-bttn");
 const taskStatus = document.getElementById("status");
 const inputTask = document.getElementById("task-input");
-const editBttn = document.getElementById("edit-button");
-const deleteBttn = document.getElementById("delete-button");
+
+// const editBttn = document.getElementById("edit-button");
+// const deleteBttn = document.getElementById("delete-button");
 
 const tasks = [
   { name: "Task 1", status: "INPROGRESS" },
@@ -38,35 +39,49 @@ function zurah() {
   for (let i = 0; i < tasks.length; i++) {
     console.log("TASKS", tasks);
     const newTaskCard = `
-      <div class="d-flex justify-content-between align-items-center border border-0 rounded p-2 container-card mb-3">
+      <div class="d-flex justify-content-between align-items-center border border-2 rounded p-2 container-card mb-3 container-card-body ${statusColor(
+        tasks[i].status
+      )}">
     <i class="bi bi-circle mb-3 me-2"></i>
-    <span class="gray-fond">${tasks[i].name}</span>
+    <span class="gray-fond">${tasks[i].name} - ${i}</span>
     <div class="d-flex justify-content-between align-items-center">
-      <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-1" id="edit-button">
+      <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-1" id="edit-button" onclick="taskUurchluh(${i})">
         <i class="bi bi-pencil"></i>
       </button>
-      <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-2" id="delete-button">
+      <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-2" id="delete-button" onclick="taskUstgah(${i})">
         <i class="bi bi-trash"></i>
       </button>
     </div>
   </div>
    `;
-
+    console.log("status", statusColor(tasks[i].status));
     switch (tasks[i].status) {
       case "TODO": {
         taskTodo.innerHTML += newTaskCard;
+        // function statusColor() {
+        //   return "";
+        // }
         break;
       }
       case "INPROGRESS": {
         taskInProgress.innerHTML += newTaskCard;
+        // function statusColor() {
+        //   return "border-warning-subtle";
+        // }
         break;
       }
       case "DONE": {
         taskDone.innerHTML += newTaskCard;
+        // function statusColor() {
+        //   return "border-success-subtle";
+        // }
         break;
       }
       case "BLOCKED": {
         taskBlocked.innerHTML += newTaskCard;
+        // function statusColor() {
+        //   return "border-danger";
+        // }
         break;
       }
       default: {
@@ -76,6 +91,23 @@ function zurah() {
   }
 }
 
+// status = tasks[i].status
+function statusColor(status) {
+  switch (status) {
+    case "TODO": {
+      return "";
+    }
+    case "INPROGRESS": {
+      return "border-warning-subtle";
+    }
+    case "DONE": {
+      return "border-success-subtle";
+    }
+    case "BLOCKED": {
+      return "border-danger";
+    }
+  }
+}
 hadgalahBttn.addEventListener("click", function () {
   const newTask = {
     name: inputTask.value,
@@ -86,3 +118,10 @@ hadgalahBttn.addEventListener("click", function () {
   console.log("TASKS", tasks);
 });
 zurah();
+
+const taskUstgah = (taskIndex) => {
+  console.log(tasks);
+  tasks.splice(taskIndex, 1);
+  zurah();
+  console.log("tasks length", taskIndex);
+};
