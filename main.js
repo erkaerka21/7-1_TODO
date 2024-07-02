@@ -6,6 +6,7 @@ const addTaskBttn = document.getElementById("addTaskBttn");
 const hadgalahBttn = document.getElementById("save-bttn");
 const taskStatus = document.getElementById("status");
 const inputTask = document.getElementById("task-input");
+const taskModal = document.getElementById("taskModal");
 
 // const editBttn = document.getElementById("edit-button");
 // const deleteBttn = document.getElementById("delete-button");
@@ -58,30 +59,34 @@ function zurah() {
     switch (tasks[i].status) {
       case "TODO": {
         taskTodo.innerHTML += newTaskCard;
-        // function statusColor() {
+        // statusColor = function () {
         //   return "";
-        // }
+        // };
+        // statusColor();
         break;
       }
       case "INPROGRESS": {
         taskInProgress.innerHTML += newTaskCard;
-        // function statusColor() {
+        // statusColor = function () {
         //   return "border-warning-subtle";
-        // }
+        // };
+        // statusColor();
         break;
       }
       case "DONE": {
         taskDone.innerHTML += newTaskCard;
-        // function statusColor() {
+        // statusColor = function () {
         //   return "border-success-subtle";
-        // }
+        // };
+        // statusColor();
         break;
       }
       case "BLOCKED": {
         taskBlocked.innerHTML += newTaskCard;
-        // function statusColor() {
+        // statusColor = function () {
         //   return "border-danger";
-        // }
+        // };
+        // statusColor();
         break;
       }
       default: {
@@ -124,4 +129,8 @@ const taskUstgah = (taskIndex) => {
   tasks.splice(taskIndex, 1);
   zurah();
   console.log("tasks length", taskIndex);
+};
+
+const taskUurchluh = (taskModal) => {
+  return 'data-bs-toggle="modal" data-bs-target="#taskModal"';
 };
