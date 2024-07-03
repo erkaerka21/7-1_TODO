@@ -34,7 +34,7 @@
                 <i class="bi bi-circle-fill bi-circle-fill-1"></i>
                 <span class="fw-bold">Хийх ажил</span>
               </div>
-              <span class="gray-fond">5</span>
+              <span class="gray-fond" id="countTodoTasks"></span>
             </div>
             <div class="card-body" id="taskTodoList">
               <!-- <div
@@ -65,7 +65,7 @@
                 <i class="bi bi-circle-fill bi-circle-fill-2"></i>
                 <span class="fw-bold">Хийж байгаа ажил</span>
               </div>
-              <span class="gray-fond">5</span>
+              <span class="gray-fond" id="countInProgressTasks"></span>
             </div>
             <div class="card-body" id="taskInProgressList"></div>
           </div>
@@ -77,7 +77,7 @@
                 <i class="bi bi-circle-fill bi-circle-fill-3"></i>
                 <span class="fw-bold">Хийсэн ажил</span>
               </div>
-              <span class="gray-fond">5</span>
+              <span class="gray-fond" id="countDoneTasks"></span>
             </div>
             <div class="card-body" id="taskDoneList"></div>
           </div>
@@ -89,7 +89,7 @@
                 <i class="bi bi-circle-fill bi-circle-fill-4"></i>
                 <span class="fw-bold">Цуцалсан ажил</span>
               </div>
-              <span class="gray-fond">5</span>
+              <span class="gray-fond" id="countBlockedTasks"></span>
             </div>
             <div class="card-body" id="taskBlockedList"></div>
           </div>
@@ -110,7 +110,7 @@
           </div>
           <div class="modal-body">
             <label for="exampleFormControlInput1" class="form-label"
-              >Title</label
+              >Ажлын нэр</label
             >
             <input
               type="text"

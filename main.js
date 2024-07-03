@@ -7,7 +7,18 @@ const hadgalahBttn = document.getElementById("save-bttn");
 const taskStatus = document.getElementById("status");
 const inputTask = document.getElementById("task-input");
 const taskModal = document.getElementById("taskModal");
-
+const countTodo = document.getElementById("countTodoTasks");
+const countInProgress = document.getElementById("countInProgressTasks");
+const countDone = document.getElementById("countDoneTasks");
+const countBlocked = document.getElementById("countBlockedTasks");
+let todoArr = [];
+let progressArr = [];
+let doneArr = [];
+let blockedArr = [];
+let todoNumber = 0;
+let InProgressNum = 0;
+let doneNumber = 0;
+let blockedNumber = 0;
 // const editBttn = document.getElementById("edit-button");
 // const deleteBttn = document.getElementById("delete-button");
 
@@ -16,6 +27,14 @@ const tasks = [
   { name: "Task 2", status: "DONE" },
   { name: "Task 3", status: "BLOCKED" },
 ];
+
+let editlegdsen = false;
+let editIndex = -1;
+
+// tasks[0].name  = "tasj 2"
+
+// currentTask.value = editTask.value
+// delete = delete done
 
 /* new task card
   <div class="d-flex justify-content-between align-items-center border border-0 rounded p-2 container-card">
@@ -46,7 +65,7 @@ function zurah() {
     <i class="bi bi-circle mb-3 me-2"></i>
     <span class="gray-fond">${tasks[i].name} - ${i}</span>
     <div class="d-flex justify-content-between align-items-center">
-      <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-1" id="edit-button" onclick="taskUurchluh(${i})">
+      <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-1" id="edit-button" onclick="taskUurchluh(${i})" data-bs-toggle="modal" data-bs-target="#taskModal">
         <i class="bi bi-pencil"></i>
       </button>
       <button class="btn d-flex justify-content-between align-items-center btn-icon btn-icon-2" id="delete-button" onclick="taskUstgah(${i})">
@@ -59,6 +78,9 @@ function zurah() {
     switch (tasks[i].status) {
       case "TODO": {
         taskTodo.innerHTML += newTaskCard;
+        todoNumber = taskTodo.childElementCount;
+        countTodo.textContent = todoNumber;
+
         // statusColor = function () {
         //   return "";
         // };
@@ -67,6 +89,8 @@ function zurah() {
       }
       case "INPROGRESS": {
         taskInProgress.innerHTML += newTaskCard;
+        InProgressNum = taskInProgress.childElementCount;
+        countInProgress.textContent = InProgressNum;
         // statusColor = function () {
         //   return "border-warning-subtle";
         // };
@@ -75,6 +99,8 @@ function zurah() {
       }
       case "DONE": {
         taskDone.innerHTML += newTaskCard;
+        doneNumber = taskDone.childElementCount;
+        countDone.textContent = doneNumber;
         // statusColor = function () {
         //   return "border-success-subtle";
         // };
@@ -83,6 +109,8 @@ function zurah() {
       }
       case "BLOCKED": {
         taskBlocked.innerHTML += newTaskCard;
+        blockedNumber = taskBlocked.childElementCount;
+        countBlocked.textContent = blockedNumber;
         // statusColor = function () {
         //   return "border-danger";
         // };
@@ -114,13 +142,23 @@ function statusColor(status) {
   }
 }
 hadgalahBttn.addEventListener("click", function () {
-  const newTask = {
-    name: inputTask.value,
-    status: taskStatus.value,
-  };
-  tasks.push(newTask);
+  if (editlegdsen) {
+    tasks[editIndex].name = inputTask.value;
+    tasks[editIndex].status = taskStatus.value;
+
+    editlegdsen = false;
+  } else {
+    const newTask = {
+      name: inputTask.value,
+      status: taskStatus.value,
+    };
+    tasks.push(newTask);
+  }
+  inputTask.value = "";
+  taskStatus.value = "TODO";
   zurah();
   console.log("TASKS", tasks);
+  console.log("hiih too", todoNumber);
 });
 zurah();
 
@@ -129,8 +167,28 @@ const taskUstgah = (taskIndex) => {
   tasks.splice(taskIndex, 1);
   zurah();
   console.log("tasks length", taskIndex);
+  console.log("hiih too", todoNumber);
 };
 
-const taskUurchluh = (taskModal) => {
-  return 'data-bs-toggle="modal" data-bs-target="#taskModal"';
+const taskUurchluh = (taskIndex) => {
+  inputTask.value = tasks[taskIndex].name;
+  taskStatus.value = tasks[taskIndex].status;
+  console.log(taskIndex);
+  editlegdsen = true;
+  editIndex = taskIndex;
+  console.log("hiih too", todoNumber);
 };
+
+// function todoTooloh() {
+//   zurah();
+//   for (let index = 0; index < tasks.length; index++) {
+//     if (tasks[index].status === "TODO") {
+//       todoArr.push(tasks[index].status);
+//     }
+//     console.log("todo arr iiin urt", todoArr.length);
+//   }
+
+todoNumber = 0;
+InProgressNum = 0;
+doneNumber = 0;
+blockedNumber = 0;
