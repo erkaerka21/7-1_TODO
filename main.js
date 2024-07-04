@@ -15,10 +15,7 @@ let todoArr = [];
 let progressArr = [];
 let doneArr = [];
 let blockedArr = [];
-let todoNumber = 0;
-let InProgressNum = 0;
-let doneNumber = 0;
-let blockedNumber = 0;
+
 // const editBttn = document.getElementById("edit-button");
 // const deleteBttn = document.getElementById("delete-button");
 
@@ -51,6 +48,10 @@ let editIndex = -1;
   </div>; */
 
 function zurah() {
+  let blockedNumber = 0;
+  let doneNumber = 0;
+  let inProgressNum = 0;
+  let todoNumber = 0;
   taskTodo.innerHTML = "";
   taskInProgress.innerHTML = "";
   taskDone.innerHTML = "";
@@ -78,9 +79,13 @@ function zurah() {
     switch (tasks[i].status) {
       case "TODO": {
         taskTodo.innerHTML += newTaskCard;
-        todoNumber = taskTodo.childElementCount;
-        countTodo.textContent = todoNumber;
-
+        // todoNumber = taskTodo.childElementCount;
+        // countTodo.textContent = todoNumber;
+        // todoArr.push(tasks[i].name);
+        // console.log("todo Arr iin elementuud", todoArr);
+        // console.log("todo Arr iin urt", todoArr.length);
+        todoNumber++;
+        console.log("todo numberiin too", todoNumber);
         // statusColor = function () {
         //   return "";
         // };
@@ -89,32 +94,38 @@ function zurah() {
       }
       case "INPROGRESS": {
         taskInProgress.innerHTML += newTaskCard;
-        InProgressNum = taskInProgress.childElementCount;
-        countInProgress.textContent = InProgressNum;
+        // InProgressNum = taskInProgress.childElementCount;
+        // countInProgress.textContent = InProgressNum;
         // statusColor = function () {
         //   return "border-warning-subtle";
         // };
         // statusColor();
+        inProgressNum++;
+        console.log("inprogress numberiin too", inProgressNum);
         break;
       }
       case "DONE": {
         taskDone.innerHTML += newTaskCard;
-        doneNumber = taskDone.childElementCount;
-        countDone.textContent = doneNumber;
+        // doneNumber = taskDone.childElementCount;
+        // countDone.textContent = doneNumber;
         // statusColor = function () {
         //   return "border-success-subtle";
         // };
         // statusColor();
+        doneNumber++;
+        console.log("done numberiin too", doneNumber);
         break;
       }
       case "BLOCKED": {
         taskBlocked.innerHTML += newTaskCard;
-        blockedNumber = taskBlocked.childElementCount;
-        countBlocked.textContent = blockedNumber;
+        // blockedNumber = taskBlocked.childElementCount;
+        // countBlocked.textContent = blockedNumber;
         // statusColor = function () {
         //   return "border-danger";
         // };
         // statusColor();
+        blockedNumber++;
+        console.log("blocked numberiin too", blockedNumber++);
         break;
       }
       default: {
@@ -122,6 +133,20 @@ function zurah() {
       }
     }
   }
+
+  // switch (tasks[i].status) {
+  //   case "TODO": {
+  //     todoArr.push(tasks[i].name);
+  //     console.log("todo arr iin too", todoArr);
+  //   }
+  //   case "INPROGRESS": {
+  //   }
+  // }
+  console.log("TODO", todoNumber);
+  countTodo.textContent = todoNumber;
+  countInProgress.textContent = inProgressNum;
+  countDone.textContent = doneNumber;
+  countBlocked.textContent = blockedNumber;
 }
 
 // status = tasks[i].status
@@ -158,7 +183,6 @@ hadgalahBttn.addEventListener("click", function () {
   taskStatus.value = "TODO";
   zurah();
   console.log("TASKS", tasks);
-  console.log("hiih too", todoNumber);
 });
 zurah();
 
@@ -166,8 +190,7 @@ const taskUstgah = (taskIndex) => {
   console.log(tasks);
   tasks.splice(taskIndex, 1);
   zurah();
-  console.log("tasks length", taskIndex);
-  console.log("hiih too", todoNumber);
+  // console.log("tasks length", taskIndex);
 };
 
 const taskUurchluh = (taskIndex) => {
@@ -176,7 +199,6 @@ const taskUurchluh = (taskIndex) => {
   console.log(taskIndex);
   editlegdsen = true;
   editIndex = taskIndex;
-  console.log("hiih too", todoNumber);
 };
 
 // function todoTooloh() {
@@ -188,7 +210,7 @@ const taskUurchluh = (taskIndex) => {
 //     console.log("todo arr iiin urt", todoArr.length);
 //   }
 
-todoNumber = 0;
-InProgressNum = 0;
-doneNumber = 0;
-blockedNumber = 0;
+// todoNumber = 0;
+// InProgressNum = 0;
+// doneNumber = 0;
+// blockedNumber = 0;
