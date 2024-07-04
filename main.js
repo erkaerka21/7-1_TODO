@@ -125,7 +125,7 @@ function zurah() {
         // };
         // statusColor();
         blockedNumber++;
-        console.log("blocked numberiin too", blockedNumber++);
+        console.log("blocked numberiin too", blockedNumber);
         break;
       }
       default: {
